@@ -83,6 +83,17 @@
 		vin-supply = <&vcc5v0_sys>;
 	};
 
+	vcc5v0_typec: regulator-vcc5v0-typec {
+		compatible = "regulator-fixed";
+		enable-active-high;
+		gpio = <&gpio1 RK_PA3 GPIO_ACTIVE_HIGH>;
+		regulator-name = "vcc5v0_typec";
+		regulator-min-microvolt = <5000000>;
+		regulator-max-microvolt = <5000000>;
+		regulator-always-on;
+		vin-supply = <&vcc5v0_sys>;
+	};
+
 	vcc_0v9: regulator-vcc-0v9 {
 		compatible = "regulator-fixed";
 		regulator-name = "vcc_0v9";
@@ -606,7 +617,7 @@
 };
 
 &u2phy0_host {
-	phy-supply = <&vcc5v0_host>;
+	phy-supply = <&vcc5v0_typec>;
 	status = "okay";
 };
 
@@ -620,7 +631,7 @@
 };
 
 &u2phy1_otg {
-	status = "okay";
+	status = "disabled";
 };
 
 &usb_host0_ehci {
@@ -632,11 +643,11 @@
 };
 
 &usb_host1_ehci {
-	status = "okay";
+	status = "disabled";
 };
 
 &usb_host1_ohci {
-	status = "okay";
+	status = "disabled";
 };
 
 &usbdrd3_0 {
