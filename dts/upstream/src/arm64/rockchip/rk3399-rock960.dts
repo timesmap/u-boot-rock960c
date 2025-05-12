@@ -121,7 +121,7 @@
 			};
 	};
 
-		usb-typec {
+	usb-typec {
 		vcc5v0_typec_en: vcc5v0-typec-en {
 			rockchip,pins = <1 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>;
 		};
